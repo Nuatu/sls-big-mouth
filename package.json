@@ -11,5 +11,9 @@
     "dependencies": {
         "bluebird": "^3.5.1",
         "co": "^4.6.0"
+    },
+    "devDependencies": {
+        "aws-sdk": "^2.266.1",
+        "serverless-pseudo-parameters": "^1.6.0"
     }
 }
