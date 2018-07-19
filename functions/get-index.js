@@ -6,9 +6,12 @@ const Promise = require("bluebird");
 const fs = Promise.promisifyAll(require("fs"));
 const Mustache = require('mustache');
 const http = require('superagent-promise')(require('superagent'), Promise);
-const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const aws4 = require('aws4');
+const URL = require('url');
+
 // Reference to Env variable set in serverless.yml
 const restaurantsApiRoot = process.env.restaurants_api;
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 var html;
 
@@ -21,7 +24,22 @@ function* loadHtml() {
 }
 
 function* getRestaurants() {
-  return (yield http.get(restaurantsApiRoot)).body;
+  // URL module API changed after Node 6.10 [be sure to update this when migrating to new Node version]
+  let url = URL.parse(restaurantsApiRoot);
+  let opts = {
+    host: url.hostname,
+    path: url.pathname,
+  }
+
+  aws4.sign(opts);
+
+  return (yield http
+  .get(restaurantsApiRoot)
+  .set('Host', opts.headers['Host'])
+  .set('X-Amz-Date', opts.headers['X-Amz-Date'])
+  .set('Authorization', opts.headers['Authorization'])
+  .set('X-Amz-Security-Token', opts.headers['X-Amz-Security-Token'])
+  ).body;
 }
 
 module.exports.handler = co.wrap(function*(event, context, callback) {
