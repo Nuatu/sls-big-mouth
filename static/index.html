@@ -119,7 +119,7 @@
             display: none;
         }
 
-        lable,
+        label,
         button,
         input {
             display: block;
@@ -137,7 +137,7 @@
     <script>
         const AWS_REGION = '{{awsRegion}}';
         const COGNITO_USER_POOL_ID = '{{cognitoUserPoolId}}';
-        const CLIENT_ID = '{{cognitoClientId}}';
+        const CLIENT_ID = '6eugosdpmt7pa214c0ne6ta0k4';
         const SEARCH_URL = '{{& searchUrl}}';
 
         var regDialog, regForm;
@@ -167,6 +167,7 @@
                 UserPoolId: COGNITO_USER_POOL_ID,
                 ClientId: CLIENT_ID
             };
+
             userPool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(data);
             cognitoUser = userPool.getCurrentUser();
 
@@ -210,7 +211,7 @@
                     Name: 'family_name', Value: lastName
                 }),
             ];
-
+            
             userPool.signUp(username, password, attributeList, null, function (err, result) {
                 if (err) {
                     alert(err);

@@ -24,7 +24,7 @@ functions:
     environment:
       restaurants_api: https://tcipt8vpc1.execute-api.us-east-1.amazonaws.com/dev/restaurants
       cognito_user_pool_id: us-east-1_e1vVtAD6r
-      cognito_client_id: 6eugosdpmt7pa214c0ne6ta0k
+      cognito_client_id: 6eugosdpmt7pa214c0ne6ta0k4
 
   get-restaurants:
     handler: functions/get-restaurants.handler
