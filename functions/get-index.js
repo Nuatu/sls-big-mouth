@@ -11,7 +11,7 @@ const URL = require('url');
 
 const awsRegion = process.env.AWS_REGION;
 const cognitoUserPoolId = process.env.cognito_user_pool_id;
-const cognitoClientID =  process.env.cognito_client_id;
+const cognitoClientId =  process.env.cognito_client_id;
 
 // Reference to Env variable set in serverless.yml
 const restaurantsApiRoot = process.env.restaurants_api;
@@ -55,7 +55,7 @@ module.exports.handler = co.wrap(function*(event, context, callback) {
     restaurants,
     awsRegion,
     cognitoUserPoolId,
-    cognitoClientID,
+    cognitoClientId,
     searchUrl: `${restaurantsApiRoot}/search`
   }
   let html = Mustache.render(template, view);

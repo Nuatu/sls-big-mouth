@@ -119,9 +119,7 @@
             display: none;
         }
 
-        label,
-        button,
-        input {
+        label, button, input {
             display: block;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 18px;
@@ -137,7 +135,7 @@
     <script>
         const AWS_REGION = '{{awsRegion}}';
         const COGNITO_USER_POOL_ID = '{{cognitoUserPoolId}}';
-        const CLIENT_ID = '6eugosdpmt7pa214c0ne6ta0k4';
+        const CLIENT_ID = '{{cognitoClientId}}';
         const SEARCH_URL = '{{& searchUrl}}';
 
         var regDialog, regForm;
@@ -397,13 +395,13 @@
         <ul class="column-container">
             <li>
                 <ul class="row-container-left">
-                    <li id="register" class="item text-trail-space">
+                    <li id="register" class="item text-trail-space hidden">
                         <a class="menu-text" href="#">Register</a>
                     </li>
-                    <li id="sign-in" class="item menu-text text-trail-space">
+                    <li id="sign-in" class="item menu-text text-trail-space hidden">
                         <a class="menu-text" href="#">Sign in</a>
                     </li>
-                    <li id="sign-out" class="item menu-text text-trail-space">
+                    <li id="sign-out" class="item menu-text text-trail-space hidden">
                         <a class="menu-text" href="#">Sign out</a>
                     </li>
                 </ul>
