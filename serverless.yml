@@ -1,4 +1,6 @@
-service: big-mouth 
+service: big-mouth
+app: big-mouth-dev
+tenant: nuatu 
 
 plugins:
   - serverless-pseudo-parameters
@@ -6,6 +8,7 @@ plugins:
 provider:
   name: aws
   runtime: nodejs6.10
+  stage: dev
   iamRoleStatements:
     - Effect: Allow
       Action: dynamodb:scan
